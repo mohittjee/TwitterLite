@@ -30,6 +30,9 @@ const Sidebar = ({ name, users, onNavChange, onUserChange, selectedUser }) => {
 
 const styles = {
   sidebar: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
     width: '200px',
     height: '100vh',
     backgroundColor: '#f4f4f4',
