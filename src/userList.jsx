@@ -5,9 +5,18 @@ const UserList = ({ users, onAddUser }) => {
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState('');
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleAddUser = () => {
     if (newUser.name.trim() === '' || newUser.email.trim() === '') {
       setError('Name and email cannot be empty');
+      return;
+    }
+    if (!validateEmail(newUser.email)) {
+      setError('Please enter a valid email');
       return;
     }
 
@@ -142,7 +151,7 @@ const styles = {
   },
   modalButton: {
     marginLeft: '10px',
-    marginTop:'5px',
+    marginTop: '5px',
     padding: '8px 16px',
     fontSize: '16px',
     cursor: 'pointer',
@@ -151,6 +160,7 @@ const styles = {
     color: 'red',
     fontSize: '14px',
     marginBottom: '10px',
+    marginTop:'5px'
   },
 };
 
